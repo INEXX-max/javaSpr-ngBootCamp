@@ -26,4 +26,17 @@ public class Product  {
 
     @Column(name="quantity_per_unit")
     private  String quantityPerUnit;
+
+    public Product(){
+
+    }
+
+    public Product(int id, String productName, int categoryId, double unitPrice, short unitsInStoc, String quantityPerUnit) {
+        this.id = id;
+        this.productName = productName;
+        this.categoryId = categoryId;
+        this.unitPrice = unitPrice;
+        this.unitsInStoc = unitsInStoc;
+        this.quantityPerUnit = quantityPerUnit;
+    }
 }

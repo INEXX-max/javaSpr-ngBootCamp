@@ -25,6 +25,9 @@ public class ProductsController {
     public List<Product> getAll() {
         return this.productService.getAll();
     }
-
+    @GetMapping("/")
+    public String home() {
+        return "INEXX Backend Sistemi Başarıyla Çalışıyor! ";
+    }
 
 }
