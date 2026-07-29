@@ -23,6 +23,7 @@ public class ProductsController {
 
     @GetMapping("/getall")
     public List<Product> getAll() {
+
         return this.productService.getAll();
     }
     @GetMapping("/")

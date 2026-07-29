@@ -13,10 +13,10 @@ public class Product  {
     private int id;
 
     @Column(name="category_id")
-    private String productName ;
+    private int categoryId ;
 
     @Column(name="product_name")
-    private int categoryId;
+    private  String productName;
 
     @Column(name="unit_price")
     private double unitPrice;
