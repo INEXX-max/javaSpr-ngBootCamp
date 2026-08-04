@@ -8,5 +8,14 @@ public class SucessDataResult <T> extends DataResults{
     public SucessDataResult(T data){
         super (data,true );
 
+
     }
+    public SucessDataResult(String message){
+        super (null,true,message);
+    }
+    public SucessDataResult(){
+        super (null,true);
+    }
+
+
 }
