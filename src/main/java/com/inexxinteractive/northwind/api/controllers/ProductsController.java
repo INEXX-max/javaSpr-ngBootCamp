@@ -14,6 +14,9 @@ import java.util.*;
 public class ProductsController {
 
     private IProductService productService;
+
+
+
     @Autowired// GİDİP PROJEYİ TARAR  ve şunu yapar bizizm yermize new ler nesne üretir  bizim yerize
     public ProductsController(IProductService productService) {
         super();
@@ -28,7 +31,7 @@ public class ProductsController {
     }
     @GetMapping("/")
     public String home() {
-        return "INEXX Backend Sistemi Başarıyla Çalışıyor! ";
+        return "INEXX INTERACTIVE INC. DataBase başarıyla çalışıyor. ";
     }
 
 }
