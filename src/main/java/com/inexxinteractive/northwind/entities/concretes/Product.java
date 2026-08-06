@@ -1,10 +1,15 @@
 package com.inexxinteractive.northwind.entities.concretes;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data // lombok çağırır ve get set yazar
 @Entity// anatsayon : bir classın derleme anaında bilgi toplma yapsısı
 @Table(name="products")
-@Data // lombok çağırır ve get set yazar
+@NoArgsConstructor
+@AllArgsConstructor//cunsrocteri ekleyen anatsayon
+//buada paramterziz konsroketö
 public class Product  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)// yeni ürürn ekeldğimzde örnek 5 . ID dolu bu anatsyon 6 dan devam eder bizi uğraştımaz
@@ -31,12 +36,5 @@ public class Product  {
 
     }
 
-    public Product(int id, String productName, int categoryId, double unitPrice, short unitsInStoc, String quantityPerUnit) {
-        this.id = id;
-        this.productName = productName;
-        this.categoryId = categoryId;
-        this.unitPrice = unitPrice;
-        this.unitsInStoc = unitsInStoc;
-        this.quantityPerUnit = quantityPerUnit;
-    }
+
 }
