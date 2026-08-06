@@ -2,11 +2,10 @@ package com.inexxinteractive.northwind.api.controllers;
 
 import com.inexxinteractive.northwind.busiess.abstracts.IProductService;
 import com.inexxinteractive.northwind.core.utilits.results.DataResults;
+import com.inexxinteractive.northwind.core.utilits.results.Results;
 import com.inexxinteractive.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -35,4 +34,12 @@ public class ProductsController {
         return "INEXX INTERACTIVE INC. DataBase başarıyla çalışıyor. ";
     }
 
+
+    @PostMapping("/add")// post kelime anlamı göndemrek burada sen  birşey gönderiyosusn
+    public Results add(@RequestBody Product product){
+        return  this.productService.add(product);
+
+        // REQUESTBODY amacı hesm istek atarhemde datayı gönderisi json fortmatında
+
+    }
 }
