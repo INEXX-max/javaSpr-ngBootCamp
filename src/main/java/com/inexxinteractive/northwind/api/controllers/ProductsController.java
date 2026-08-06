@@ -1,6 +1,7 @@
 package com.inexxinteractive.northwind.api.controllers;
 
 import com.inexxinteractive.northwind.busiess.abstracts.IProductService;
+import com.inexxinteractive.northwind.core.utilits.results.DataResults;
 import com.inexxinteractive.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class ProductsController {
 
 
     @GetMapping("/getall")
-    public List<Product> getAll() {
+    public DataResults<List<Product>> getAll() {
 
         return this.productService.getAll();
     }
