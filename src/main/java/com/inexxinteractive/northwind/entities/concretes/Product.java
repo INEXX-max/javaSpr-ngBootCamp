@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data // lombok çağırır ve get set yazar
 @Entity// anatsayon : bir classın derleme anaında bilgi toplma yapsısı
 @Table(name="products")
-@NoArgsConstructor
 @AllArgsConstructor//cunsrocteri ekleyen anatsayon
 //buada paramterziz konsroketö
 public class Product  {
