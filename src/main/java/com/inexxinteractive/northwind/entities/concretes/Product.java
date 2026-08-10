@@ -13,8 +13,8 @@ public class Product  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)// yeni ürürn ekeldğimzde örnek 5 . ID dolu bu anatsyon 6 dan devam eder bizi uğraştımaz
     // paraantezi içide işği sql burkaır AUTO_INCREMENT  özlleğii kullanır kayıt db ye gider o andkai ugun ıd yerleştirri
-    @Column(name="product_id")                                  //111111111     11111112   11111113
-    private int id;
+  //  @Column(name="product_id")                                  //111111111     11111112   11111113
+ //  private int id;
 
     @Column(name="category_id")
     private int categoryId ;
