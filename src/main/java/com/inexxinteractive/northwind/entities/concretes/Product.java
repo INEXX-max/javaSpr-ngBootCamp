@@ -1,5 +1,6 @@
 package com.inexxinteractive.northwind.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 @Data // lombok çağırır ve get set yazar
 @Entity // anatsayon : bir classın derleme anaında bilgi toplma yapsısı
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "products"})
 @Table(name="products")
 @AllArgsConstructor // cunsrocteri ekleyen anatsayon
 @NoArgsConstructor // Parametresiz constructor'ı otomatik ekler
