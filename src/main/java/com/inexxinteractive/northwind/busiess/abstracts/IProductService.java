@@ -11,7 +11,8 @@ import java.util.List;
 public interface IProductService {
 
     DataResults<List<Product>> getAll();
-
+    DataResults<List<Product>> getAll(int pageNo, int pageSize);
+    DataResults<List<Product>> getAllSorted();
     Results add(Product product);
 
     DataResults<Product> getByProductName(String productName);

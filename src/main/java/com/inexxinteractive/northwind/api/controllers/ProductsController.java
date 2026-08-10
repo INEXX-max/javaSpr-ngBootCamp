@@ -7,51 +7,70 @@ import com.inexxinteractive.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductsController {
 
-    private IProductService productService;
+    private final IProductService productService;
 
-
-
-    @Autowired// GİDİP PROJEYİ TARAR  ve şunu yapar bizizm yermize new ler nesne üretir  bizim yerize
+    @Autowired
     public ProductsController(IProductService productService) {
-        super();
         this.productService = productService;
     }
 
+    @GetMapping("/")
+    public String home() {
+        return "INEXX INTERACTIVE INC. DataBase başarıyla çalışıyor.";
+    }
 
     @GetMapping("/getall")
     public DataResults<List<Product>> getAll() {
-
         return this.productService.getAll();
     }
-    @GetMapping("/")
-    public String home() {
-        return "INEXX INTERACTIVE INC. DataBase başarıyla çalışıyor. ";
+
+    @GetMapping("/getAllByPage")
+    public DataResults<List<Product>> getAll(int pageNo, int pageSize) {
+        return this.productService.getAll(pageNo, pageSize);
     }
 
-
-    @PostMapping("/add")// post kelime anlamı göndemrek burada sen  birşey gönderiyosusn
-    public Results add(@RequestBody Product product){
-        return  this.productService.add(product);
-
-        // REQUESTBODY amacı hesm istek atarhemde datayı gönderisi json fortmatında
+    @PostMapping("/add")
+    public Results add(@RequestBody Product product) {
+        return this.productService.add(product);
     }
 
     @GetMapping("/getByProductName")
-    public DataResults<Product> getByProductName(@RequestParam String productName){
+    public DataResults<Product> getByProductName(@RequestParam String productName) {
         return this.productService.getByProductName(productName);
     }
 
     @GetMapping("/getByProductNameAndCategoryId")
-    public DataResults<Product>
-    getByProductNameAndCategoryId(@RequestParam("productName")  String productName,@RequestParam int categoryId){
-        return  this.productService.getByProductNameAndCategoryId(productName,categoryId);
+    public DataResults<Product> getByProductNameAndCategoryId(@RequestParam String productName,
+                                                              @RequestParam int categoryId) {
+        return this.productService.getByProductNameAndCategoryId(productName, categoryId);
     }
 
+    @GetMapping("/getByProductNameOrCategoryId")
+    public DataResults<List<Product>> getByProductNameOrCategoryId(@RequestParam String productName,
+                                                                   @RequestParam int categoryId) {
+        return this.productService.getByProductNameOrCategoryId(productName, categoryId);
+    }
+
+    @GetMapping("/getByProductNameContains")
+    public DataResults<List<Product>> getByProductNameContains(@RequestParam String productName) {
+        return this.productService.getByProductNameContains(productName);
+    }
+
+    @GetMapping("/getByProductNameStartsWith")
+    public DataResults<List<Product>> getByProductNameStartsWith(@RequestParam String productName) {
+        return this.productService.getByProductNameStartsWith(productName);
+    }
+
+    @GetMapping("/getByNameAndCategory")
+    public DataResults<List<Product>> getByNameAndCategory(@RequestParam String productName,
+                                                           @RequestParam int categoryId) {
+        return this.productService.getByNameAndCategory(productName, categoryId);
+    }
 
 }

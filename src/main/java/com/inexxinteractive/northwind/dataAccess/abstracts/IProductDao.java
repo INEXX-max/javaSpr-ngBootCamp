@@ -21,9 +21,7 @@ public interface IProductDao extends JpaRepository<Product, Integer> {
 
     List<Product> getByProductNameStartingWith(String productName);
 
-    // YANLIŞ KULLANIM: p.Category.categoryId (Büyük C)
-// DOĞRU KULLANIM: p.category.categoryId (Küçük c)
-
     @Query("FROM Product p WHERE p.productName = :productName AND p.category.categoryId = :categoryId")
-    List<Product> getByNameAndCategory(@Param("productName") String productName, @Param("categoryId") int categoryId);
+    List<Product> getByNameAndCategory(@Param("productName") String productName,
+                                       @Param("categoryId") int categoryId);
 }
