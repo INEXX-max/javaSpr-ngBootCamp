@@ -40,6 +40,12 @@ public class ProductsController {
         return  this.productService.add(product);
 
         // REQUESTBODY amacı hesm istek atarhemde datayı gönderisi json fortmatında
-
     }
+
+    @GetMapping("getByProductName")
+    public DataResults<Product> getByProductName(@RequestParam String productName){
+        return this.productService.getByProductName(productName);
+    }
+
+
 }

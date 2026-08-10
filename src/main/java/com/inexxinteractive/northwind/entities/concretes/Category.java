@@ -15,11 +15,11 @@ import java.util.List;
 public class Category {
     @Id
     @Column(name = "category_id")
-    private int CategoryID;
+    private int categoryId;
     @Column(name = "category_name")
     private  String categoryName;
 
-    @OneToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
 
 }
