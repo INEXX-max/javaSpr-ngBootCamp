@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 
 @Data // lombok çağırır ve get set yazar
 @Entity // anatsayon : bir classın derleme anaında bilgi toplma yapsısı
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "products"})
 @Table(name="products")
 @AllArgsConstructor // cunsrocteri ekleyen anatsayon
 @NoArgsConstructor // Parametresiz constructor'ı otomatik ekler
+
 public class Product  {
 
     @Id
@@ -34,6 +34,7 @@ public class Product  {
 
     @Column(name="quantity_per_unit")
     private String quantityPerUnit;
+
 
     @ManyToOne
     @JoinColumn(name="category_id")
