@@ -8,6 +8,8 @@ import com.inexxinteractive.northwind.core.utilits.results.SucessResult;
 import com.inexxinteractive.northwind.dataAccess.abstracts.IProductDao;
 import com.inexxinteractive.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.inexxinteractive.northwind.core.utilits.results.SucessDataResult;
+import com.inexxinteractive.northwind.entities.dtos.ProductWithCategoryDto;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -70,10 +72,7 @@ public class ProductManager implements IProductService {
         return new SucessDataResult<>(this.productDao.getByProductNameContains(productName), "Ürünler listelendi.");
     }
 
-    @Override
-    public DataResults<List<Product>> getByProductNameStartsWith(String productName) {
-        return null;
-    }
+
 
 
     @Override
@@ -84,6 +83,10 @@ public class ProductManager implements IProductService {
     public DataResults<List<Product>> getAllSorted() {
         Sort sort = Sort.by(Sort.Direction.DESC, "productName");
         return new SucessDataResult<>(this.productDao.findAll(sort), "Başarılı");
+    }
+    @Override
+    public DataResults<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return new SucessDataResult<>(this.productDao.getProductWithCategoryDetails(), "Ürünler kategorileriyle listelendi");
     }
 
 

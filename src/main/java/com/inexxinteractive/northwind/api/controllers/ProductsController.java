@@ -4,6 +4,7 @@ import com.inexxinteractive.northwind.busiess.abstracts.IProductService;
 import com.inexxinteractive.northwind.core.utilits.results.DataResults;
 import com.inexxinteractive.northwind.core.utilits.results.Results;
 import com.inexxinteractive.northwind.entities.concretes.Product;
+import com.inexxinteractive.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -64,7 +65,7 @@ public class ProductsController {
 
     @GetMapping("/getByProductNameStartsWith")
     public DataResults<List<Product>> getByProductNameStartsWith(@RequestParam String productName) {
-        return this.productService.getByProductNameStartsWith(productName);
+        return this.productService.getProductWithCategoryDetails(productName);
     }
 
     @GetMapping("/getByNameAndCategory")
@@ -73,4 +74,8 @@ public class ProductsController {
         return this.productService.getByNameAndCategory(productName, categoryId);
     }
 
+    @GetMapping("/getProductWithCategoryDetails")
+    public DataResults<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return this.productService.getProductWithCategoryDetails();
+    }
 }
