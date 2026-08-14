@@ -88,6 +88,10 @@ public class ProductManager implements IProductService {
     public DataResults<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
         return new SucessDataResult<>(this.productDao.getProductWithCategoryDetails(), "Ürünler kategorileriyle listelendi");
     }
+    @Override
+    public DataResults<List<Product>> getByProductNameStartsWith(String productName) {
+        return new SucessDataResult<>(this.productDao.getByProductNameStartsWith(productName), "Ürünler listelendi.");
+    }
 
 
 }

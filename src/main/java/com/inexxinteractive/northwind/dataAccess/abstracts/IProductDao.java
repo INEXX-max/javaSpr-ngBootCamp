@@ -19,6 +19,7 @@ public interface IProductDao extends JpaRepository<Product, Integer> {
     List<Product> getByCategory_CategoryIdIn(List<Integer> categories);
 
     List<Product> getByProductNameContains(String productName);
+    List<Product> getByProductNameStartsWith(String productName);
 
     List<Product> getByProductNameStartingWith(String productName);
 

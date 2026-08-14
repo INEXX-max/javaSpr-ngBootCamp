@@ -65,7 +65,8 @@ public class ProductsController {
 
     @GetMapping("/getByProductNameStartsWith")
     public DataResults<List<Product>> getByProductNameStartsWith(@RequestParam String productName) {
-        return this.productService.getProductWithCategoryDetails(productName);
+
+        return this.productService.getByProductNameStartsWith(productName);
     }
 
     @GetMapping("/getByNameAndCategory")
