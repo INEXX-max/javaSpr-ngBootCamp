@@ -8,6 +8,7 @@ import com.inexxinteractive.northwind.core.utilits.results.Results;
 import com.inexxinteractive.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -36,12 +37,15 @@ public class UsersController {
 
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ErorDataResult<Object> handleValidationException
-            (MethodArgumentNotValidException exception) {
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErorDataResult<Object> handleValidationException(MethodArgumentNotValidException exception) {
         Map<String,String> validationEror=new HashMap<String ,String>() ;
         for(FieldError fieldError: exception.getBindingResult().getFieldErrors()){
+            validationEror.put(fieldError.getField(),fieldError.getDefaultMessage());
 
         }
+        ErorDataResult<Object> erors=new ErorDataResult<    Object>(validationEror,"Doğrulama hataalrı");
+        return  erors;
 
     }
 
