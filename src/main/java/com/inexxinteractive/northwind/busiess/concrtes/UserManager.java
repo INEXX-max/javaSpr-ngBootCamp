@@ -7,22 +7,25 @@ import com.inexxinteractive.northwind.core.utilits.results.DataResults;
 import com.inexxinteractive.northwind.core.utilits.results.Results;
 import com.inexxinteractive.northwind.core.utilits.results.SucessDataResult;
 import com.inexxinteractive.northwind.core.utilits.results.SucessResult;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor // Tüm bağımlılıkları güvenle enjekte eder
 public class UserManager implements UserService {
-    private UserDao userDao;
 
-    @Autowired
+    // final ekledik: Bu sayede nesnenin boş (null) kalması kesinlikle engellenir.
+    private final UserDao userDao;
+
     @Override
     public Results add(User user) {
         this.userDao.save(user);
-        return  new SucessResult("User added. ");
+        return new SucessResult("User added.");
     }
 
     @Override
     public DataResults<User> findByEmail(String email) {
-        return  new SucessDataResult<User>(this.userDao.findByEmail("Email is logged"));
+        // Arama kısmına sabit metin yerine 'email' değişkenini verdik, metni mesaj kısmına taşıdık.
+        return new SucessDataResult<User>(this.userDao.findByEmail(email), "Email is logged");
     }
 }

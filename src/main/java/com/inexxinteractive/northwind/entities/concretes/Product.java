@@ -36,8 +36,8 @@ public class Product  {
     private String quantityPerUnit;
 
 
-    @ManyToOne
-    @JoinColumn(name="category_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
     private Category category;
 }
 
